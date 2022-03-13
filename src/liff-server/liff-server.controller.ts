@@ -1,5 +1,6 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { CredentialDto } from './dto/credential-dto';
+import { CreateAccessTokenDto } from './dto/create-access-token.dto';
+import { CredentialDto } from './dto/credential.dto';
 import { LiffServerService } from './liff-server.service';
 
 @Controller('liff/server')
@@ -9,6 +10,11 @@ export class LiffServerController {
   @Get()
   healthCheck(): string {
     return this.liffServerService.healthCheck();
+  }
+
+  @Post('/token')
+  createAccessToken(@Body() createAccessToken: CreateAccessTokenDto) {
+    return this.liffServerService.createAccessToken(createAccessToken);
   }
 
   @Post('/apps')
