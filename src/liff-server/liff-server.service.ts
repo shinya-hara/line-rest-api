@@ -1,6 +1,7 @@
 import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
 import { map } from 'rxjs';
+import { CredentialDto } from './dto/credential-dto';
 
 @Injectable()
 export class LiffServerService {
@@ -10,9 +11,13 @@ export class LiffServerService {
     return 'OK';
   }
 
-  apps() {
+  apps(credentialDto: CredentialDto) {
     return this.httpService
-      .get('https://jsonplaceholder.typicode.com/todos/1', {})
+      .get('https://api.line.me/liff/v1/apps', {
+        headers: {
+          Authorization: 'Bearer ' + credentialDto.channelAccessToken,
+        },
+      })
       .pipe(map((response) => response.data));
   }
 }
