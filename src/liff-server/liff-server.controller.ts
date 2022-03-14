@@ -1,4 +1,5 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
+import { AddLiffAppDto } from './dto/add-liff-app.dto';
 import { CreateAccessTokenDto } from './dto/create-access-token.dto';
 import { CredentialDto } from './dto/credential.dto';
 import { LiffServerService } from './liff-server.service';
@@ -18,7 +19,15 @@ export class LiffServerController {
   }
 
   @Post('/apps')
-  apps(@Body() credentialDto: CredentialDto) {
-    return this.liffServerService.apps(credentialDto);
+  getLiffAllApps(@Body() credentialDto: CredentialDto) {
+    return this.liffServerService.getLiffAllApps(credentialDto);
+  }
+
+  @Post('/add-apps')
+  addLiffApp(
+    @Body() credentialDto: CredentialDto,
+    @Body() addLiffAppDto: AddLiffAppDto,
+  ) {
+    return this.liffServerService.addLiffApp(credentialDto, addLiffAppDto);
   }
 }
