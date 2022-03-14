@@ -48,11 +48,11 @@ export class LiffServerService {
    * すべてのLIFFアプリを取得する
    * @see https://developers.line.biz/ja/reference/liff-server/#get-all-liff-apps
    */
-  getLiffAllApps(credentialDto: CredentialDto) {
+  getLiffAllApps(authorization: string) {
     return this.httpService
       .get('https://api.line.me/liff/v1/apps', {
         headers: {
-          Authorization: 'Bearer ' + credentialDto.channelAccessToken,
+          Authorization: authorization,
         },
       })
       .pipe(map((response) => response.data));
@@ -62,11 +62,11 @@ export class LiffServerService {
    * LIFFアプリをチャネルに追加する
    * @see https://developers.line.biz/ja/reference/liff-server/#add-liff-app
    */
-  addLiffApp(credentialDto: CredentialDto, addLiffAppDto: AddLiffAppDto) {
+  addLiffApp(authorization: string, addLiffAppDto: AddLiffAppDto) {
     return this.httpService
       .post('https://api.line.me/liff/v1/apps', addLiffAppDto, {
         headers: {
-          Authorization: 'Bearer ' + credentialDto.channelAccessToken,
+          Authorization: authorization,
         },
       })
       .pipe(map((response) => response.data));
