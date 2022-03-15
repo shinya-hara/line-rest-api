@@ -1,7 +1,6 @@
 import { Body, Controller, Get, Headers, Post } from '@nestjs/common';
 import { AddLiffAppDto } from './dto/add-liff-app.dto';
 import { CreateAccessTokenDto } from './dto/create-access-token.dto';
-import { CredentialDto } from './dto/credential.dto';
 import { LiffServerService } from './liff-server.service';
 
 @Controller('liff/server')

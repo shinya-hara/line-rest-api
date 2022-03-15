@@ -2,7 +2,6 @@ import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
 import { map } from 'rxjs';
 import { CreateAccessTokenDto } from './dto/create-access-token.dto';
-import { CredentialDto } from './dto/credential.dto';
 import { AddLiffAppDto } from './dto/add-liff-app.dto';
 import { ICreateAccessTokenResponse } from './interface/api/create-access-token.interface';
 
